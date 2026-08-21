@@ -1,0 +1,93 @@
+class Student {
+int id;
+String name;
+String dept;
+
+Student(int id, String name, String dept) {
+    this.id = id;
+    this.name = name;
+    this.dept = dept;
+}
+
+void displayStudentDetails() {
+    System.out.println("Student ID: " + id);
+    System.out.println("Name: " + name);
+    System.out.println("Department: " + dept);
+}
+}
+
+class UndergraduateStudent extends Student {
+int semester;
+double cgpa;
+
+UndergraduateStudent(int id, String name, String dept, int semester, double cgpa) {
+    super(id, name, dept);
+    this.semester = semester;
+    this.cgpa = cgpa;
+}
+
+void displayDetails() {
+    displayStudentDetails();
+    System.out.println("Semester: " + semester);
+    System.out.println("CGPA: " + cgpa);
+}
+}
+
+class PostgraduateStudent extends Student {
+String specialization;
+String researchTopic;
+
+PostgraduateStudent(int id, String name, String dept,
+                    String specialization, String researchTopic) {
+    super(id, name, dept);
+    this.specialization = specialization;
+    this.researchTopic = researchTopic;
+}
+
+void displayDetails() {
+    displayStudentDetails();
+    System.out.println("Specialization: " + specialization);
+    System.out.println("Research Topic: " + researchTopic);
+}
+}
+
+public class Main {
+public static void main(String[] args) {
+
+    // Test Case 1
+    UndergraduateStudent ug =
+        new UndergraduateStudent(101, "Ravi", "CSE", 5, 8.75);
+
+    System.out.println("Undergraduate Student Details");
+    ug.displayDetails();
+
+    System.out.println();
+
+    // Test Case 2
+    PostgraduateStudent pg =
+        new PostgraduateStudent(201, "Anita", "ECE",
+                                "AI", "Computer Vision");
+
+    System.out.println("Postgraduate Student Details");
+    pg.displayDetails();
+
+    System.out.println();
+
+    // Test Case 3 - Inherited common details
+    UndergraduateStudent student =
+        new UndergraduateStudent(102, "Kiran", "ISE", 6, 8.50);
+
+    System.out.println("Inherited Student Details");
+    student.displayStudentDetails();
+
+    System.out.println();
+
+    // Test Case 4 - Undergraduate-specific details
+    UndergraduateStudent student2 =
+        new UndergraduateStudent(103, "Rahul", "CSE", 7, 9.10);
+
+    System.out.println("Undergraduate Specific Details");
+    System.out.println("Semester: " + student2.semester);
+    System.out.println("CGPA: " + student2.cgpa);
+}
+}
