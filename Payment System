@@ -1,0 +1,41 @@
+class Payment {
+    void pay() {
+        System.out.println("Payment is made");
+    }
+}
+
+class CreditCard extends Payment {
+    @Override
+    void pay() {
+        System.out.println("Payment made using Credit Card");
+    }
+}
+
+class UPI extends Payment {
+    @Override
+    void pay() {
+        System.out.println("Payment made using UPI");
+    }
+}
+
+class Cash extends Payment {
+    @Override
+    void pay() {
+        System.out.println("Payment made using Cash");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Payment p;
+
+        p = new CreditCard();
+        p.pay();
+
+        p = new UPI();
+        p.pay();
+
+        p = new Cash();
+        p.pay();
+    }
+}
