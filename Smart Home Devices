@@ -1,0 +1,54 @@
+class Test {
+
+    interface SmartDevice {
+        void turnOn();
+        void turnOff();
+    }
+
+    static class Light implements SmartDevice {
+        public void turnOn() {
+            System.out.println("Light is turned ON");
+        }
+
+        public void turnOff() {
+            System.out.println("Light is turned OFF");
+        }
+    }
+
+    static class Fan implements SmartDevice {
+        public void turnOn() {
+            System.out.println("Fan is turned ON");
+        }
+
+        public void turnOff() {
+            System.out.println("Fan is turned OFF");
+        }
+    }
+
+    static class AirConditioner implements SmartDevice {
+        public void turnOn() {
+            System.out.println("Air Conditioner is turned ON");
+        }
+
+        public void turnOff() {
+            System.out.println("Air Conditioner is turned OFF");
+        }
+    }
+
+    public static void main(String args[]) {
+
+        SmartDevice d;
+
+        d = new Light();
+        d.turnOn();
+        d.turnOff();
+
+        d = new Fan();
+        d.turnOn();
+        d.turnOff();
+
+        d = new AirConditioner();
+        d.turnOn();
+        d.turnOff();
+    }
+}
