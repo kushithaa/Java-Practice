@@ -1,0 +1,38 @@
+class Test {
+
+    interface Payment {
+        void pay(double amount);
+    }
+
+    static class UPI implements Payment {
+        public void pay(double amount) {
+            System.out.println("Paid Rs." + amount + " using UPI");
+        }
+    }
+
+    static class Card implements Payment {
+        public void pay(double amount) {
+            System.out.println("Paid Rs." + amount + " using Card");
+        }
+    }
+
+    static class NetBanking implements Payment {
+        public void pay(double amount) {
+            System.out.println("Paid Rs." + amount + " using Net Banking");
+        }
+    }
+
+    public static void main(String args[]) {
+
+        Payment p;
+
+        p = new UPI();
+        p.pay(1000);
+
+        p = new Card();
+        p.pay(2000);
+
+        p = new NetBanking();
+        p.pay(3000);
+    }
+}
