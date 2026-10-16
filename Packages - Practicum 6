@@ -1,0 +1,119 @@
+Customer
+package bank.customers;
+
+public class Customer {
+    String customerId;
+    String customerName;
+    long contactNumber;
+
+    public Customer(String customerId, String customerName, long contactNumber) {
+        this.customerId = customerId;
+        this.customerName = customerName;
+        this.contactNumber = contactNumber;
+    }
+
+    public void displayCustomerDetails() {
+        System.out.println("Customer ID: " + customerId);
+        System.out.println("Customer Name: " + customerName);
+        System.out.println("Contact Number: " + contactNumber);
+    }
+}
+Loan
+package bank.loans;
+
+public class Loan {
+    String loanNumber;
+    String loanType;
+    double loanAmount;
+
+    public Loan(String loanNumber, String loanType, double loanAmount) {
+        this.loanNumber = loanNumber;
+        this.loanType = loanType;
+        this.loanAmount = loanAmount;
+    }
+
+    public void displayLoanDetails() {
+        System.out.println("Loan Number: " + loanNumber);
+        System.out.println("Loan Type: " + loanType);
+        System.out.println("Loan Amount: ₹" + loanAmount);
+    }
+}
+Account
+package bank.accounts;
+
+public class Account {
+    String accountNumber;
+    String accountType;
+    double balance;
+
+    public Account(String accountNumber, String accountType, double balance) {
+        this.accountNumber = accountNumber;
+        this.accountType = accountType;
+        this.balance = balance;
+    }
+
+    public void deposit(double amount) {
+        if (amount <= 0) {
+            System.out.println("Invalid deposit amount.");
+        } else {
+            balance += amount;
+            System.out.println("Deposit successful.");
+        }
+    }
+
+    public void withdraw(double amount) {
+        if (amount <= 0) {
+            System.out.println("Invalid withdrawal amount.");
+        } else if (amount > balance) {
+            System.out.println("Insufficient balance.");
+        } else {
+            balance -= amount;
+            System.out.println("Withdrawal successful.");
+        }
+    }
+
+    public void displayBalance() {
+        System.out.println("Account Number: " + accountNumber);
+        System.out.println("Account Type: " + accountType);
+        System.out.println("Balance: ₹" + balance);
+    }
+}
+Main
+package bank;
+
+import bank.customers.Customer;
+import bank.loans.Loan;
+import bank.accounts.Account;
+
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("===== BANK MANAGEMENT SYSTEM =====");
+
+        Customer customer = new Customer("C101", "Rahul", 9876543210L);
+        System.out.println("\nCustomer Details:");
+        customer.displayCustomerDetails();
+
+        Loan loan = new Loan("L201", "Home Loan", 500000);
+        System.out.println("\nLoan Details:");
+        loan.displayLoanDetails();
+
+        Account account = new Account("A301", "Savings", 20000);
+        System.out.println("\nAccount Details:");
+        account.displayBalance();
+
+        System.out.println("\nDeposit ₹10000:");
+        account.deposit(10000);
+
+        System.out.println("\nWithdraw ₹5000:");
+        account.withdraw(5000);
+
+        System.out.println("\nUpdated Account Details:");
+        account.displayBalance();
+
+        System.out.println("\nTest Negative Deposit:");
+        account.deposit(-2000);
+
+        System.out.println("\nTest Excess Withdrawal:");
+        account.withdraw(50000);
+    }
+}
