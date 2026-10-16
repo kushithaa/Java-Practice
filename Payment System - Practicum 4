@@ -1,0 +1,67 @@
+import java.util.Scanner;
+class Payment {
+    void makePayment(double amount) {
+        System.out.println("Amount = " + amount);
+    }
+  void makePayment(double amount, double paymentAmount, String txnId) {
+        System.out.println("Amount = " + amount);
+        System.out.println("PaymentAmount = " + paymentAmount);
+        System.out.println("TransactionID = " + txnId);
+    }
+}
+class CreditCardPayment extends Payment {
+    @Override
+    void makePayment(double amount, double paymentAmount, String txnId) {
+        System.out.println("Credit Card Payment");
+        System.out.println("Amount = " + amount);
+        System.out.println("PaymentAmount = " + paymentAmount);
+        System.out.println("TransactionID = " + txnId);
+    }
+}
+class UPIPayment extends Payment {
+    @Override
+    void makePayment(double amount) {
+        System.out.println("UPI Payment");
+        System.out.println("Amount = " + amount);
+    }
+}
+class NetBankingPayment extends Payment {
+    @Override
+    void makePayment(double amount) {
+        System.out.println("Net Banking Payment");
+        System.out.println("Amount = " + amount);
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        if (!sc.hasNextDouble()) return;
+        double a = sc.nextDouble();
+
+        if (!sc.hasNextDouble()) return;
+        double p = sc.nextDouble();
+
+        if (!sc.hasNext()) return;
+        String id = sc.next();
+
+        if (!sc.hasNextDouble()) return;
+        double u = sc.nextDouble();
+
+        if (!sc.hasNextDouble()) return;
+        double n = sc.nextDouble();
+
+        Payment payment;
+
+        payment = new CreditCardPayment();
+        payment.makePayment(a, p, id);
+
+        payment = new UPIPayment();
+        payment.makePayment(u);
+
+        payment = new NetBankingPayment();
+        payment.makePayment(n);
+
+        sc.close();
+    }
+} 
